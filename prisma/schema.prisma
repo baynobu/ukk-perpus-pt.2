@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  UserId Int @id @default(autoincrement())
+  Username    String 
+  Password    String
+  Email       String @unique
+  NamaLengkap String
+  Alamat      String @db.Text
+}
+
+model buku {
+  BukuId Int @id @default(autoincrement())
+  Judul String
+  Penulis String
+  Penerbit String
+  TahunTerbit DateTime @db.Date
+}
+
+model kategoribuku {
+  KategoriId   Int @id @default(autoincrement())
+  NamaKategori String
+}
+
+model koleksipribadi {
+  KoleksiId Int @id @default(autoincrement())
+  //UserId Int
+  //BukuId Int
+}
+
+model ulasanbuku {
+  UlasanId Int @id @default(autoincrement())
+  //UserId Int
+  //BukuId Int
+  Ulasan String @db.Text
+  Rating Int
+}
+
+model peminjaman {
+  PeminjamanId Int @id @default(autoincrement())
+  //UserId Int
+  //BukuId Int
+  TanggalPeminjaman DateTime @db.Date
+  TanggalPengembalian DateTime? @db.Date
+  StatusPemninjaman String
+}
+
+model kategoribuku_relasi {
+  KategoriBukuId Int @id @default(autoincrement())
+  //BukuId Int
+  //KategoriId Int
+}
