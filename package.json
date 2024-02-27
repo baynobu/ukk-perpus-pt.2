@@ -5,8 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "migrate-model": "\"node models/MigrateModel.js\" && exit",
-    "migrate-relation": "node models/MigrateAssociation.js",
+    "migrate-session": "\"node models/MigrateSession.js\" && exit",
+    "migrate-model": "node models/MigrateAssociation.js",
     "generate": "prisma generate",
     "start": "nodemon run"
   },
