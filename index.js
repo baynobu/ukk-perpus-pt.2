@@ -9,6 +9,7 @@ import BookRoute from "./routes/BookRoute.js";
 import BorrowRoute from "./routes/BorrowRoute.js"
 import RatingRoute from "./routes/RatingRoute.js"
 import BookCollection from "./routes/BookCollectionRoute.js"
+import ProfileRoute from "./routes/ProfileRoute.js"
 
 
 dotenv.config();
@@ -45,6 +46,7 @@ app.use("/auth", AuthRoute);
 app.use(BorrowRoute);
 app.use("/book", RatingRoute);
 app.use("/user", BookCollection);
+app.use("/user", ProfileRoute);
 
 
 

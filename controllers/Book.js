@@ -18,6 +18,28 @@ export const getBooks = async (req, res) => {
   }
 };
 
+export const getBookById = async (req, res) => {
+  try {
+    const book = await Book.findOne({
+      where: {
+        BukuId: req.params.id
+      },
+      attributes: [
+        'BukuId',
+        "Judul",
+        "Penulis",
+        "Penerbit",
+        "TahunTerbit",
+      ],
+    });
+    if (!book) return res.status(404).json({ msg: "Data not found" });
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+}
+
+
 export const createBook = async (req, res) => {
   try {
     const { Judul, Penulis, Penerbit, TahunTerbit } = req.body;
