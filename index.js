@@ -7,6 +7,8 @@ import sequelizeStore from "connect-session-sequelize";
 import AuthRoute from "./routes/AuthRoute.js";
 import BookRoute from "./routes/BookRoute.js";
 import BorrowRoute from "./routes/BorrowRoute.js"
+import RatingRoute from "./routes/RatingRoute.js"
+import BookCollection from "./routes/BookCollectionRoute.js"
 
 
 dotenv.config();
@@ -40,7 +42,9 @@ app.use(
 app.use(express.json());
 app.use(BookRoute);
 app.use("/auth", AuthRoute);
-app.use(BorrowRoute)
+app.use(BorrowRoute);
+app.use("/book", RatingRoute);
+app.use("/user", BookCollection);
 
 
 

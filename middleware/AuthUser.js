@@ -22,7 +22,7 @@ export const SuperUser = async (req, res, next) =>{
         }
     });
     if(!user) return res.status(404).json({msg: "User not found"});
-    if(user.role !== "Developer" && user.role !== "Admin") return res.status(403).send("Prohibited Access!");
+    if(user.role !== "Admin") return res.status(403).send("Prohibited Access!");
     next();
 }
 
@@ -33,7 +33,7 @@ export const pustakawan = async (req, res, next) =>{
         }
     });
     if(!user) return res.status(404).json({msg: "User tidak ditemukan"});
-    if(user.role !== "Admin" && user.role !== "Developer" && user.role !== "Librarian") return res.status(403).send("Prohibited Access!");
+    if(user.role !== "Admin" && user.role !== "Librarian") return res.status(403).send("Prohibited Access!");
     next();
 }
 

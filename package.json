@@ -8,7 +8,8 @@
     "migrate-session": "\"node models/MigrateSession.js\" && exit",
     "migrate-model": "node models/MigrateAssociation.js",
     "generate": "prisma generate",
-    "start": "nodemon run"
+    "start": "nodemon run",
+    "seeder": "concurrently \"node prisma/seedBook.js\" \"node prisma/seedUser.js\""
   },
   "keywords": [],
   "author": "",

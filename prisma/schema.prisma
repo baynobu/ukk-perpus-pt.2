@@ -7,21 +7,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
-  UserId Int @id @default(autoincrement())
+model users {
+  uuid String @id @default(uuid())
   Username    String 
   Password    String
   Email       String @unique
   NamaLengkap String
   Alamat      String @db.Text
+  role        String @default("Member")
+  createdAt DateTime
+  updatedAt DateTime
 }
 
-model buku {
+model books {
   BukuId Int @id @default(autoincrement())
   Judul String
   Penulis String
   Penerbit String
   TahunTerbit DateTime @db.Date
+  createdAt DateTime
+  updatedAt DateTime
 }
 
 model kategoribuku {
@@ -49,7 +54,7 @@ model peminjaman {
   //BukuId Int
   TanggalPeminjaman DateTime @db.Date
   TanggalPengembalian DateTime? @db.Date
-  StatusPemninjaman String
+  StatusPemninjaman String @default("Borrowed")
 }
 
 model kategoribuku_relasi {

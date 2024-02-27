@@ -7,11 +7,11 @@ import { SuperUser } from "../middleware/AuthUser.js";
 
 const router = express.Router();
 
-router.patch('/return-book/:id', verifyUser, returnBook);
+router.patch('/return-book/:id', verifyUser, pustakawan, returnBook);
 
-router.get('/borrow', verifyUser,getBorrow);
-router.get('/borrow-returned', verifyUser, getBorrowReturned);
+router.get('/borrow', verifyUser, pustakawan, getBorrow);
+router.get('/borrow-returned', verifyUser, pustakawan, getBorrowReturned);
 
-router.post('/borrow', verifyUser, createRequest);
+router.post('/borrow', verifyUser, pustakawan, createRequest);
 
 export default router;
